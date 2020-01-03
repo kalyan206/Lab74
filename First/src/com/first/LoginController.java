@@ -2,6 +2,7 @@ package com.first;
 
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +36,16 @@ public class LoginController {
 		String pw =user.getPassword();
 		System.out.println(un);
 		System.out.println(pw);
-		if(!un.equals(pw))
-			return "login";
+		if(!un.equals(pw)) {
+			return "login";}
+		
 		return "home";
 		
 	}
 
 
 	@RequestMapping("/login")
-	public String showLoginForm(Map model)throws SerialException{
+	public String showLoginForm(Map model)throws ServletException{
 		System.out.println("LoginForm");
 		User user=new User();
 		user.setUsername("kalyan");
